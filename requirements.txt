@@ -1,0 +1,10 @@
+flask
+google-cloud-aiplatform
+google-auth
+google-auth-oauthlib
+vertexai
+pymupdf
+pytesseract
+pillow
+gunicorn
+google-generativeai
