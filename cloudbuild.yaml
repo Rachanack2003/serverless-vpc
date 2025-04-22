@@ -15,16 +15,17 @@ steps:
       'gcr.io/angular-vector-456406-i8/myapp:latest'
     ]
 
-  # Step 3: Deploy to Cloud Run
+  # Step 3: Deploy to Cloud Run with VPC connector
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
     args: [
       'run',
       'deploy',
-      'extractor-service',  # Your service name
+      'extractor-service',  # Your Cloud Run service name
       '--image=gcr.io/angular-vector-456406-i8/myapp:latest',
-      '--region=asia-south1',
+      '--region=us-central1',
       '--platform=managed',
+      '--vpc-connector=my-vpc-connector',
       '--allow-unauthenticated'
     ]
 
