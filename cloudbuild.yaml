@@ -1,14 +1,22 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/$PROJECT_ID/myapp', '.']
+
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/myapp']
+
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
-    args: ['run', 'deploy', 'version4a', '--image', 'gcr.io/$PROJECT_ID/myapp', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
+    args: [
+      'run', 'deploy', 'version4a',
+      '--image', 'gcr.io/$PROJECT_ID/myapp',
+      '--region', 'us-central1',
+      '--platform', 'managed',
+      '--allow-unauthenticated'
+    ]
 
 images:
   - 'gcr.io/$PROJECT_ID/myapp'
+
 options:
   logging: CLOUD_LOGGING_ONLY
-
